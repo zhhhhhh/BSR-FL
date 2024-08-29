@@ -1,10 +1,11 @@
-# PyFE
+# FE
 
 Python implementation of some existing functional encryption schemes supporting the inner product functionality.
 
 **NOTE:** This implementation is only meant for educational and research purposes.
 
 ## Installation
+The src file can be download from "https://github.com/cecyliaborek/FE-inner-product"
 
 This library uses [Charm](https://github.com/JHUISI/charm) - a framework for rapidly prototyping cryptosystems. To install Charm, first verify that you have installed the following dependencies:
 
@@ -26,32 +27,4 @@ Each scheme consists of four basic methods:
 All methods are implemented as independent script methods and so can be used independently on different machines if we just provide the correct keys.
 
 #### Example usage
-```python
-import src.inner_product.single_input_fe.ddh_pk_ip.ddh_pk_ip
-
-fe = src.inner_product.single_input_fe.ddh_pk_ip.ddh_pk_ip
-
-# generate master public and secret key
-mpk, msk = fe.set_up(security_parameter=1024, vector_length=10)
-
-# get functional key for some vector y
-y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-func_key = fe.get_functional_key(mpk=mpk, msk=msk, y=y)
-
-# encrypt some vector x
-x = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
-x_ciphertext = fe.encrypt(mpk=mpk, x=x)
-
-# decrypt inner product of x and y lying within some limit
-inner_product = fe.decrypt(mpk=mpk, ciphertext=x_ciphertext, sk_y=func_key, y=y, limit=200)
-```
-
-## Schemes
-
-Currently implemented schemes:
-
-- [Public key inner product FE scheme based on DDH assumption from Abdalla, Michel et al. “Simple Functional Encryption Schemes for Inner Products.”](src/inner_product/single_input_fe/ddh_pk_ip/ddh_pk_ip.py)
-- [A generic public key inner product FE scheme based on DDH assumption, build on additive elgamal from Abdalla, Michel et al. “Simple Functional Encryption Schemes for Inner Products.”](src/inner_product/single_input_fe/elgamal_ip/elgamal_ip.py)
-- [A fully secure inner product FE scheme based on DDH assumption from Agrawal, Shweta, Benoît Libert, and Damien Stehlé. “Fully Secure Functional Encryption for Inner Products, from Standard Assumptions.”](src/inner_product/single_input_fe/fully_secure_fe/fully_secure_fe_ddh.py)
-- [A fully secure inner product FE scheme based on LWE assumption for short integer vectors from Agrawal, Shweta, Benoît Libert, and Damien Stehlé. “Fully Secure Functional Encryption for Inner Products, from Standard Assumptions.”](src/inner_product/single_input_fe/fully_secure_fe/fully_secure_fe_lwe_short_int.py)
-- [A multi-input functional encryption scheme without pairings for inner product over integers modulo L from Abdalla, Michel et al. “Multi-Input Functional Encryption for Inner Products: Function-Hiding Realizations and Constructions Without Pairings.”](src/inner_product/mife/mife_no_pairings/mife_no_pairings_modulo.py)
+python test_nddf.py
