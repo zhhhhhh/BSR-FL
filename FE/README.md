@@ -27,4 +27,4 @@ Each scheme consists of four basic methods:
 All methods are implemented as independent script methods and so can be used independently on different machines if we just provide the correct keys.
 
 #### Example usage
-python test_nddf.py
+python test.py
